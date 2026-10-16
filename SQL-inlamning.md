@@ -1,8 +1,8 @@
 # SQL-inlämning — Diskografi
 
-**Namn:** [Ditt namn]  
-**Artist:** [Din valda artist]  
-**Datum:** [Datum]
+**Namn:** [Emma Löwing]  
+**Artist:** [Taylor Swift]  
+**Datum:** [16-10-26]
 
 ---
 
