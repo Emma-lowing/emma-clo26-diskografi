@@ -337,12 +337,10 @@ FROM Songs
 ORDER BY duration_seconds DESC
 LIMIT 1;
 
+--- query 5: Alla låtar sorterade alfabetiskt ---
 SELECT title
 FROM Songs
 ORDER BY title ASC;
-
---- query 5: Alla låtar sorterade alfabetiskt ---
-
 ```
 
 ---
