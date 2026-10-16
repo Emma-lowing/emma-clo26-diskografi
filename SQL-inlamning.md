@@ -8,6 +8,7 @@
 
 > Lägg länk till eller bild på ditt ER-diagram här:
 > `[ER-diagram](er_diagram.png)`
+<img width="658" height="1270" alt="ER-diagram Taylor Swift låtar databs" src="https://github.com/user-attachments/assets/141d2118-696a-4279-81f0-f220a3cca9d9" />
 
 ---
 
