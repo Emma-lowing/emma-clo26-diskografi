@@ -379,11 +379,33 @@ WHERE id = 18;
 
 ```sql
 --- query 6: Snittlängd på låtar per album ---
-
+SELECT Albums.title, ROUND(AVG(duration_seconds), 2) AS average_song_length_in_seconds
+FROM Albums
+JOIN Songs
+ON Albums.id = Songs.album_id
+GROUP BY Albums.id, Albums.title;
 
 --- query 7: Albumet med flest låtar ---
-
+WITH AlbumCounts AS(
+SELECT Albums.title, COUNT(Songs.id) AS number_of_songs
+FROM Albums
+JOIN Songs
+ON Albums.id = Songs.album_id
+GROUP BY Albums.id, Albums.title
+) 
+SELECT title, number_of_songs
+FROM AlbumCounts
+WHERE number_of_songs = (
+    SELECT MAX(number_of_songs)
+    FROM AlbumCounts
+);
 
 --- query 8: Alla låtar längre än 4 minuter (240 sekunder), med albumtitel ---
-
+SELECT Songs.title, duration_seconds, Albums.title
+FROM Songs
+JOIN Albums
+ON Albums.id = Songs.album_id
+WHERE duration_seconds > 240
+ORDER BY duration_seconds DESC;
+--Jag valde att lägga till "ORDER BY duration_seconds DESC" för att det ska se snyggare ut
 ```
