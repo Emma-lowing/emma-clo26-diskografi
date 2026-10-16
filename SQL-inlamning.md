@@ -351,7 +351,7 @@ ORDER BY title ASC;
 --- lägg till ett nytt album eller en ny låt ---
 -- Jag väljer att se den här INSERT som en symbol för hoppet som väcktes hos alla Swifties den 25 maj 2025 när Taylor släppte "Look What You Made Me Do Taylor's Version" i Serien "The Handmaid's Tale".
 INSERT INTO Albums (title, release_year, artist_id)
-VALUES ('Reputation Taylor''s Version', 2025, 1);
+VALUES ('Reputation Taylor''s Version', NULL, 1);
 ```
 
 ---
