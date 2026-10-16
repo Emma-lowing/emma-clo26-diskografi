@@ -31,10 +31,11 @@ FOREIGN KEY (artist_id) REFERENCES Artists(id)
 CREATE TABLE Songs (
     id INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
-    duration INTEGER,
+    duration_seconds INTEGER,
     album_id INTEGER NOT NULL,
     FOREIGN KEY (album_id) REFERENCES Albums(id)
 );
+
 
 CREATE TABLE Genres (
 id INTEGER PRIMARY KEY,
@@ -77,7 +78,7 @@ INSERT INTO Albums (title, release_year, artist_id)
 VALUES ('Midnights', 2022, 1);
 
 --Skrivet manuellt.
-INSERT INTO Songs (title, duration, album_id)
+INSERT INTO Songs (title, duration_seconds, album_id)
 VALUES
 ('Fearless', 241, 1),
 ('Fifteen', 294, 1),
@@ -93,7 +94,7 @@ VALUES
 ('The Best Day', 245, 1),
 ('Change', 280, 1);
 
-INSERT INTO Songs (title, duration, album_id)
+INSERT INTO Songs (title, duration_seconds, album_id)
 VALUES
 ('State of Grace', 295, 2),
 ('Red', 223, 2),
@@ -113,7 +114,7 @@ VALUES
 ('Begin Again', 237, 2);
 
 --Ai hjälp för att effektivisera.
-INSERT INTO Songs (title, duration, album_id)
+INSERT INTO Songs (title, duration_seconds, album_id)
 VALUES
 ('Welcome to New York', 212, 3),
 ('Blank Space', 231, 3),
@@ -129,7 +130,7 @@ VALUES
 ('I Know Places', 195, 3),
 ('Clean', 270, 3);
 
-INSERT INTO Songs (title, duration, album_id)
+INSERT INTO Songs (title, duration_seconds, album_id)
 VALUES
 ('the 1', 210, 4),
 ('cardigan', 239, 4),
@@ -148,7 +149,7 @@ VALUES
 ('peace', 234, 4),
 ('hoax', 220, 4);
 
-INSERT INTO Songs (title, duration, album_id)
+INSERT INTO Songs (title, duration_seconds, album_id)
 VALUES
 ('Lavender Haze', 202, 5),
 ('Maroon', 218, 5),
@@ -314,16 +315,31 @@ VALUES
 
 ```sql
 --- query 1: Lista alla album, sorterade efter år ---
-
+SELECT title, release_year
+FROM Albums
+ORDER BY release_year ASC;
 
 --- query 2: Lista alla låtar på ett specifikt album ---
-
+SELECT title
+FROM Songs
+WHERE album_id = 5;
 
 --- query 3: Antal låtar per album ---
-
+SELECT ALbums.title, COUNT(Songs.title) AS number_of_songs
+FROM Albums
+JOIN Songs
+ON Albums.id = Songs.album_id
+GROUP BY Albums.id, Albums.title;
 
 --- query 4: Längsta låten ---
+SELECT title, duration_seconds
+FROM Songs
+ORDER BY duration_seconds DESC
+LIMIT 1;
 
+SELECT title
+FROM Songs
+ORDER BY title ASC;
 
 --- query 5: Alla låtar sorterade alfabetiskt ---
 
